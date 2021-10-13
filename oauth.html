@@ -6,10 +6,9 @@
 <body>
 </body>
 <script>
-  function searchParam(key) {
-    return URLSearchParams(location.search).get(key);
-  }
-  var auth_code = new searchParam('code');
-  location.href='https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=6f86b2c435a386a703385dccb678aa7d&redirect_uri=https://bcmusic.co.kr/oauth&code=' + auth_code;
+var url = new URL(window.location.href);
+var params = new URLSearchParams(url.search);
+var auth_code = params.get('code');
+location.href='https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=6f86b2c435a386a703385dccb678aa7d&redirect_uri=https://bcmusic.co.kr/oauth&code=' + auth_code;
 </script>
 <html>
