@@ -84,8 +84,37 @@
                 <br></br>
             </div>
           </div>
-          <div> <a href="https://kauth.kakao.com/oauth/authorize?client_id=6f86b2c435a386a703385dccb678aa7d&redirect_uri=
-https://bcmusic.co.kr/oauth&response_type=code"><img src="images/kakaotalk_icon/kakao_login_medium_narrow.png"></a>
+          <div>
+            <a id="custom-login-btn" href="javascript:kakaoLogin()">
+              <img
+              src="images/kakaotalk_icon/1.png"
+              width="222"
+              />
+            </a>
+            <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+            <script type="text/javascript">
+            Kakao.init('06f2d2532934550e7af7c606211aa59f');
+            Kakao.isInitialized();
+            function kakaoLogin() {
+                window.Kakao.Auth.login({
+                  scope: 'profile_nickname', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+                  success: function(response) {
+                      console.log(response) // 로그인 성공하면 받아오는 데이터
+                      window.Kakao.API.request({ // 사용자 정보 가져오기
+                          url: '/v2/user/me',
+                          success: (res) => {
+                              const kakao_account = res.kakao_account;
+                              console.log(kakao_account)
+                          }
+                      });
+                      // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+                  },
+                  fail: function(error) {
+                      console.log(error);
+                  }
+              });
+          }
+          </script>
           </div>
         </div>
       </div>
@@ -110,6 +139,7 @@ https://bcmusic.co.kr/oauth&response_type=code"><img src="images/kakaotalk_icon/
 </script> -->
 
 <!--Jquery-->
+
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <!--Boostrap-Jquery-->
