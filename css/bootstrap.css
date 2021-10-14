@@ -120,6 +120,12 @@ textarea {
 button {
   overflow: visible;
 }
+button.api-btn {
+    color: black;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
 button,
 select {
   text-transform: none;

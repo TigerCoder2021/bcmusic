@@ -91,6 +91,22 @@
               width="222"
               />
             </a>
+            <a id="kakao-login-btn"></a>
+          	<button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button>
+          	<div id="result"></div>
+            <script type="text/javascript">
+              function unlinkApp() {
+                Kakao.API.request({
+                  url: '/v1/user/unlink',
+                  success: function(res) {
+                    alert('success: ' + JSON.stringify(res))
+                  },
+                  fail: function(err) {
+                    alert('fail: ' + JSON.stringify(err))
+                  },
+                })
+              }
+            </script>
             <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
             <script type="text/javascript">
             Kakao.init('06f2d2532934550e7af7c606211aa59f');
