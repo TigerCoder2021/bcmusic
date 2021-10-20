@@ -116,6 +116,20 @@
                   scope: 'friends, profile_nickname, talk_message', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
                   success: function(response) {
                       console.log(response) // 로그인 성공하면 받아오는 데이터
+                      window.localstorage.setItem('access_token', response['access_token'])
+                      window.localstorage.setItem('expires_in', response['expires_in'])
+                      window.localstorage.setItem('refresh_token', response['refresh_token'])
+                      window.localstorage.setItem('refresh_token_expires_in', response['refresh_token_expires_in'])
+                      window.localstorage.setItem('scope', response['scope'])
+                      window.localstorage.setItem('token_type', response['token_type'])
+
+                      window.localstorage.getItem('access_token', response['access_token'])
+                      window.localstorage.getItem('expires_in', response['expires_in'])
+                      window.localstorage.getItem('refresh_token', response['refresh_token'])
+                      window.localstorage.getItem('refresh_token_expires_in', response['refresh_token_expires_in'])
+                      window.localstorage.getItem('scope', response['scope'])
+                      window.localstorage.getItem('token_type', response['token_type'])
+
                       alert('로그인 완료');
                       window.Kakao.API.request({ // 사용자 정보 가져오기
                           url: '/v2/user/me',
