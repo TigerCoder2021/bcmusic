@@ -117,19 +117,19 @@
                   success: function(response) {
                       console.log(response) // 로그인 성공하면 받아오는 데이터
                       console.log(response["access_token"])
-                      localstorage.setItem("access_token", response["access_token"])
-                      localstorage.setItem("expires_in", response["expires_in"])
-                      localstorage.setItem("refresh_token", response["refresh_token"])
-                      localstorage.setItem("refresh_token_expires_in", response["refresh_token_expires_in"])
-                      localstorage.setItem("scope", response["scope"])
-                      localstorage.setItem("token_type", response["token_type"])
+                      window.localstorage.setItem("access_token", response["access_token"])
+                      window.localstorage.setItem("expires_in", response["expires_in"])
+                      window.localstorage.setItem("refresh_token", response["refresh_token"])
+                      window.localstorage.setItem("refresh_token_expires_in", response["refresh_token_expires_in"])
+                      window.localstorage.setItem("scope", response["scope"])
+                      window.localstorage.setItem("token_type", response["token_type"])
 
-                      localstorage.key("access_token")
-                      localstorage.key("expires_in")
-                      localstorage.key("refresh_token")
-                      localstorage.key("refresh_token_expires_in")
-                      localstorage.key("scope")
-                      localstorage.key("token_type")
+                      window.localstorage.key("access_token")
+                      window.localstorage.key("expires_in")
+                      window.localstorage.key("refresh_token")
+                      window.localstorage.key("refresh_token_expires_in")
+                      window.localstorage.key("scope")
+                      window.localstorage.key("token_type")
 
                       alert('로그인 완료');
                       window.Kakao.API.request({ // 사용자 정보 가져오기
